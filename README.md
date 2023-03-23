@@ -1,3 +1,3 @@
 # OtterBot
 
-Funny otter bot goes brrrrrrrr
+Fanny otter bot goes brrrrrrrr
