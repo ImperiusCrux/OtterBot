@@ -1,6 +1,7 @@
 from datetime import datetime
 from enum import Enum
 
+
 class Type(Enum):
     INFO = 0
     WARNING = 1
