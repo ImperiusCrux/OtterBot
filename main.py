@@ -6,8 +6,10 @@ import log
 from dotenv import load_dotenv
 from discord.ext import commands
 
+import reddit_otters as redott
+
 load_dotenv()
-client = discord.client()
+client = discord.Client(intents=discord.Intents.default())
 
 activeChannel = None
 
@@ -17,7 +19,7 @@ async def on_ready():
     log.log(0, "Bot is ready.")
 
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.default())
 
 
 @bot.command(name="Paddel_nach")
@@ -39,7 +41,4 @@ async def setChannel(ctx, nextChannel: str):
     time.sleep(1)
     await activeChannel.send("Nett hier!")
     log.log(0, "Connected to new Channel.")
-
-
-
 
