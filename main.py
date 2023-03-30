@@ -1,13 +1,12 @@
-import os
 import time
 import discord
-import threading
 import log
+import reddit_otters as reddot
 from dotenv import load_dotenv
 from discord.ext import commands
-
 load_dotenv()
-client = discord.client()
+intents=discord.Intents.all()
+client = discord.Client(intents=intents)
 
 activeChannel = None
 
@@ -17,7 +16,7 @@ async def on_ready():
     log.log(0, "Bot is ready.")
 
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 
 @bot.command(name="Paddel_nach")
@@ -40,6 +39,7 @@ async def setChannel(ctx, nextChannel: str):
     await activeChannel.send("Nett hier!")
     log.log(0, "Connected to new Channel.")
 
-
+def main():
+    reddot.get_top_otters(3, "reddit.com")
 
 
