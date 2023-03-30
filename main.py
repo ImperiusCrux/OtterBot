@@ -9,7 +9,7 @@ from discord.ext import commands
 import reddit_otters as redott
 
 load_dotenv()
-client = discord.Client(intents=discord.Intents.default())
+client = discord.Client(intents=discord.Intents.all())
 
 activeChannel = None
 
@@ -19,7 +19,7 @@ async def on_ready():
     log.log(0, "Bot is ready.")
 
 
-bot = commands.Bot(command_prefix="!", intents=discord.Intents.default())
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
 @bot.command(name="Paddel_nach")
