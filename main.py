@@ -39,6 +39,7 @@ async def setChannel(ctx, nextChannel: str):
     await activeChannel.send("Nett hier!")
     log.log(0, "Connected to new Channel.")
 
+
 def main():
     reddot.get_top_otters(3, "reddit.com")
 
