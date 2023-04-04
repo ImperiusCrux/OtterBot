@@ -18,9 +18,11 @@ def authenticate():
 
 
 #  scrapes n amount of post in r/'name', sorted by new; day
-def get_url(reddit, name, links, amount):
+def get_url(auth, name, amount):
+    links = []
     # find subreddit
-    subreddit = reddit.subreddit(name)
-    for submission in subreddit.top(limit=amount, time_filter="new"):
-        links.append(submission.url)
+    subreddit = auth.subreddit(name)
+    for submission in subreddit.new(limit=amount):
+        if not submission.is_self:
+            links.append(submission.url)
     return links

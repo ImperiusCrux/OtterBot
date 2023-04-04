@@ -1,12 +1,15 @@
-import time
 import discord
 import log
 import reddit_otters as reddot
+import threading as th
+import time
 from dotenv import load_dotenv
 from discord.ext import commands
 load_dotenv()
-intents=discord.Intents.all()
+intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+client.run("MTA4ODM4NTEzMzM2MDQ2ODAyOA.Gg56TW.qObASSxPA1Vx-dzO2cHyByKHBO_AvP6ZVlTrTo")
+qtList = []
 
 activeChannel = None
 
@@ -40,7 +43,29 @@ async def setChannel(ctx, nextChannel: str):
     log.log(0, "Connected to new Channel.")
 
 
+async def checkQTs():
+    global qtList
+    newQTs = reddot.get_url(reddot.authenticate(), "Otters", 20)
+    i = 0
+    for qts in newQTs:
+        if "gallery" in qts or "v.redd.it" in qts or qtList.count(qts) != 0:
+            newQTs[i] = None
+        i += 1
+    qtList = newQTs
+    if qtList is not None and activeChannel is not None:
+        for qts in qtList:
+            await activeChannel.send(qts)
+
+
+def holdOnASecond():
+    time.sleep(10)
+    checkQTs()
+    holdOnASecond()
+
+
 def main():
-    reddot.get_top_otters(3, "reddit.com")
+    timer = th.Thread(target=holdOnASecond(), daemon=True)
+    timer.start()
 
 
+main()
