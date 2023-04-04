@@ -1,10 +1,10 @@
 import os
-import praw
+import asyncpraw as praw
 import requests
 
 
 # Authentication to the reddit app
-def authenticate():
+async def authenticate():
     print('logging in...')
     reddit = praw.Reddit("BOT1",
                          client_id="vQ-zP_hXpB27vBaaJDo62A",
@@ -13,12 +13,12 @@ def authenticate():
                          username="otter_lover_bot",
                          user_agent="BOT1 user agent",
                          )
-    print('logged in as {}'.format(reddit.user.me()))
+    print('logged in as {}'.format(await reddit.user.me()))
     return reddit
 
 
 #  scrapes n amount of post in r/'name', sorted by new; day
-def get_url(auth, name, amount):
+async def get_url(auth, name, amount):
     links = []
     # find subreddit
     subreddit = auth.subreddit(name)

@@ -1,0 +1,45 @@
+INFO --- [2023-04-04 11:53:58.682903]: Bot is ready. 
+INFO --- [2023-04-04 11:56:24.604081]: Bot is ready. 
+INFO --- [2023-04-04 11:56:53.341645]: Bot is ready. 
+INFO --- [2023-04-04 11:57:46.836519]: Bot is ready. 
+WARNING --- [2023-04-04 11:57:52.274577]: Channel not found :C 
+INFO --- [2023-04-04 11:59:13.052041]: Bot is ready. 
+WARNING --- [2023-04-04 11:59:18.342317]: Channel not found :C 
+INFO --- [2023-04-04 12:00:10.577526]: Bot is ready. 
+WARNING --- [2023-04-04 12:00:14.445875]: Channel not found :C 
+INFO --- [2023-04-04 12:01:31.291993]: Bot is ready. 
+INFO --- [2023-04-04 12:01:53.484072]: Bot is ready. 
+WARNING --- [2023-04-04 12:01:55.281439]: Channel not found :C 
+INFO --- [2023-04-04 12:04:39.774946]: Bot is ready. 
+WARNING --- [2023-04-04 12:04:46.307441]: Channel not found :C 
+INFO --- [2023-04-04 12:05:20.871292]: Bot is ready. 
+INFO --- [2023-04-04 12:05:22.872474]: Connected to new Channel. 
+INFO --- [2023-04-04 12:06:12.599634]: Bot is ready. 
+INFO --- [2023-04-04 12:06:12.876023]: Connected to new Channel. 
+INFO --- [2023-04-04 13:19:55.148059]: Bot is ready. 
+INFO --- [2023-04-04 13:22:04.961872]: Bot is ready. 
+INFO --- [2023-04-04 13:22:24.509541]: Connected to new Channel. 
+INFO --- [2023-04-04 13:24:39.551717]: Bot is ready. 
+INFO --- [2023-04-04 13:28:43.409402]: Bot is ready. 
+INFO --- [2023-04-04 13:29:43.314157]: Bot is ready. 
+INFO --- [2023-04-04 13:31:37.744812]: Bot is ready. 
+INFO --- [2023-04-04 13:34:29.627491]: Bot is ready. 
+ERROR --- [2023-04-04 13:34:54.686200]: can only concatenate str (not "list") to strHilfe wo sind meine Otter? 
+ERROR --- [2023-04-04 13:35:06.334103]: can only concatenate str (not "list") to strHilfe wo sind meine Otter? 
+INFO --- [2023-04-04 13:35:59.073418]: Bot is ready. 
+INFO --- [2023-04-04 13:38:47.854258]: Bot is ready. 
+ERROR --- [2023-04-04 13:46:59.149744]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
+INFO --- [2023-04-04 13:55:19.631468]: Bot is ready. 
+INFO --- [2023-04-04 15:18:15.696632]: Bot is ready. 
+INFO --- [2023-04-04 15:20:27.769466]: Bot is ready. 
+INFO --- [2023-04-04 15:24:43.945685]: Bot is ready. 
+INFO --- [2023-04-04 15:26:13.866672]: Bot is ready. 
+INFO --- [2023-04-04 15:27:40.301072]: Bot is ready. 
+INFO --- [2023-04-04 15:28:02.820294]: Bot is ready. 
+INFO --- [2023-04-04 15:28:32.987819]: Bot is ready. 
+INFO --- [2023-04-04 15:29:04.965552]: Connected to new Channel. 
+INFO --- [2023-04-04 15:30:55.943832]: Connected to new Channel. 
+ERROR --- [2023-04-04 15:31:54.015801]: object list can't be used in 'await' expressionHilfe wo sind meine Otter? 
+ERROR --- [2023-04-04 15:32:42.900727]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
+ERROR --- [2023-04-04 15:33:26.837954]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
+ERROR --- [2023-04-04 15:33:49.186891]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
