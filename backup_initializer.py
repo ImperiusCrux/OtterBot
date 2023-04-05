@@ -14,7 +14,7 @@ activeChannel = None
 
 @bot.event
 async def on_ready():
-    await holdOnASecond(10)
+    await holdOnASecond(68400)
 
 
 @bot.command()
