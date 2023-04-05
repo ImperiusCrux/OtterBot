@@ -1,6 +1,7 @@
 import asyncio
 import discord
-import reddit_otters as reddot
+import connect_backup as reddot
+import os
 from dotenv import load_dotenv
 from discord.ext import commands
 load_dotenv()
@@ -13,7 +14,7 @@ activeChannel = None
 
 @bot.event
 async def on_ready():
-    await holdOnASecond(68400)
+    await holdOnASecond(10)
 
 
 @bot.command()
@@ -48,16 +49,17 @@ async def checkQTs():
         global qtList
         if activeChannel is None:
             return
-        newQTs = await reddot.get_url(await reddot.authenticate(), "Otters", 20)
+        newQTs = await reddot.get_url(await reddot.authenticate(), "Otters", 10)
         i = 0
         if newQTs is None:
             await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
             return
+        help = []
         for qts in newQTs:
             if "gallery" in qts or "v.redd.it" in qts or qts in qtList:
                 newQTs[i] = None
             i += 1
-
+        helpList = qtList
         qtList = newQTs
         if qtList is not None and activeChannel is not None:
             j = 0
@@ -66,16 +68,16 @@ async def checkQTs():
                     await activeChannel.send(qts)
                     await asyncio.sleep(1)
                 j += 1
+        qtList = qtList + helpList
     except Exception as e:
         return
-
 
 async def holdOnASecond(seconds):
     await checkQTs()
     await asyncio.sleep(seconds)
     await holdOnASecond(seconds)
 
-bot.run("MTA4ODM4NTEzMzM2MDQ2ODAyOA.Gg56TW.qObASSxPA1Vx-dzO2cHyByKHBO_AvP6ZVlTrTo")
+bot.run(os.getenv("TOKEN"))
 
 
 

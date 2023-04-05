@@ -4,7 +4,6 @@ import requests
 import log
 
 
-# Authentication to the reddit app
 async def authenticate():
     reddit = praw.Reddit("BOT1",
                          client_id="vQ-zP_hXpB27vBaaJDo62A",
@@ -16,11 +15,9 @@ async def authenticate():
     return reddit
 
 
-#  scrapes n amount of post in r/'name', sorted by new; day
 async def get_url(reddit, name, amount):
     try:
         links = []
-        # find subreddit
         subreddit = await reddit.subreddit(name)
         async for submission in subreddit.new(limit=amount):
             if not submission.is_self:
