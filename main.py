@@ -1,13 +1,8 @@
 import asyncio
-from threading import Timer
-import threading as th
 import discord
-import log
 import reddit_otters as reddot
-import time
 from dotenv import load_dotenv
 from discord.ext import commands
-from discord.ext import tasks
 load_dotenv()
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -18,8 +13,7 @@ activeChannel = None
 
 @bot.event
 async def on_ready():
-    await holdOnASecond(10)
-    log.log(0, "Bot is ready.")
+    await holdOnASecond(68400)
 
 
 @bot.command()
@@ -27,7 +21,7 @@ async def test(ctx, arg):
     await ctx.send(arg)
 
 
-@bot.command(name="paddel_nach")
+@bot.command(name="Paddel_nach")
 @commands.has_role("Enhydra lutris")
 async def moveChannel(ctx, nextChannel):
     try:
@@ -40,59 +34,48 @@ async def moveChannel(ctx, nextChannel):
 
         if activeChannel is None:
             await ctx.send("Hoppla, diesen Channel kann ich nicht finden.")
-            log.log(1, "Channel not found :C" )
             return
         await ctx.send("Okey dokey!")
-        time.sleep(1)
+        await asyncio.sleep(1)
         await activeChannel.send("Nett hier!")
-        log.log(0, "Connected to new Channel.")
     except Exception as e:
-        log.log(2, str(e) + "Die FLosse klemmt.")
-
-
-@tasks.loop(seconds=10)
-async def loopDeLoop():
-    print("loop")
+        return
 
 
 async def checkQTs():
-    print("check running")
     try:
         global activeChannel
         global qtList
+        if activeChannel is None:
+            return
         newQTs = await reddot.get_url(await reddot.authenticate(), "Otters", 20)
         i = 0
+        if newQTs is None:
+            await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
+            return
         for qts in newQTs:
-            if "gallery" in qts or "v.redd.it" in qts or qtList.count(qts) != 0:
+            if "gallery" in qts or "v.redd.it" in qts or qts in qtList:
                 newQTs[i] = None
             i += 1
+
         qtList = newQTs
         if qtList is not None and activeChannel is not None:
-            print("hopp")
+            j = 0
             for qts in qtList:
-                await activeChannel.send(qts)
+                if qtList[j] is not None:
+                    await activeChannel.send(qts)
+                    await asyncio.sleep(1)
+                j += 1
     except Exception as e:
-        log.log(2, str(e) + "Hilfe wo sind meine Otter?")
+        return
 
 
 async def holdOnASecond(seconds):
     await checkQTs()
     await asyncio.sleep(seconds)
-    await holdOnASecond()
-
-
-async def holdOnTwoSecs():
-    print("1")
-    await asyncio.sleep(10)
-    print("2")
-    await holdOnTwoSecs()
-
-
-#async def loopDeLooper():
-#    await loopDeLoop.start()
+    await holdOnASecond(seconds)
 
 bot.run("MTA4ODM4NTEzMzM2MDQ2ODAyOA.Gg56TW.qObASSxPA1Vx-dzO2cHyByKHBO_AvP6ZVlTrTo")
-#asyncio.run(loopDeLooper())
 
 
 

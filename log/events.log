@@ -43,3 +43,30 @@ ERROR --- [2023-04-04 15:31:54.015801]: object list can't be used in 'await' exp
 ERROR --- [2023-04-04 15:32:42.900727]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
 ERROR --- [2023-04-04 15:33:26.837954]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
 ERROR --- [2023-04-04 15:33:49.186891]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:05:52.571934]: 'coroutine' object has no attribute 'new'Hilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:10:41.190495]: 'ListingGenerator' object is not iterableHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:12:03.580790]: 'Subreddit' object has no attribute 'submissions'. 'Subreddit' object has not been fetched, did you forget to execute '.load()'?Hilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:26:47.251774]: 'Subreddit' object has no attribute 'submissions'. 'Subreddit' object has not been fetched, did you forget to execute '.load()'?Hilfe wo ist mein Reddit 
+ERROR --- [2023-04-05 09:26:47.251774]: object NoneType can't be used in 'await' expressionHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:31:02.163760]: 'ListingGenerator' object is not iterableHilfe wo ist mein Reddit 
+ERROR --- [2023-04-05 09:31:02.167854]: object NoneType can't be used in 'await' expressionHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:32:49.066195]: 'NoneType' object is not iterableHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:33:53.582747]: 'NoneType' object is not iterableHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:50:13.999318]: 'ListingGenerator' object has no attribute 'submissions'Hilfe wo ist mein Reddit 
+ERROR --- [2023-04-05 09:50:14.006582]: object NoneType can't be used in 'await' expressionHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:57:20.609225]: 'ListingGenerator' object is not iterableHilfe wo ist mein Reddit 
+ERROR --- [2023-04-05 09:57:20.610387]: object NoneType can't be used in 'await' expressionHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 09:58:50.348687]: 'NoneType' object is not iterableHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 10:26:01.200751]: 'NoneType' object is not iterableHilfe wo sind meine Otter? 
+ERROR --- [2023-04-05 10:28:18.000892]: 'NoneType' object has no attribute 'send'Hilfe wo sind meine Otter? 
+INFO --- [2023-04-05 10:31:50.278341]: Connected to new Channel. 
+INFO --- [2023-04-05 10:34:18.908792]: Connected to new Channel. 
+ERROR --- [2023-04-05 10:34:38.580636]: 400 Bad Request (error code: 50006): Cannot send an empty messageHilfe wo sind meine Otter? 
+INFO --- [2023-04-05 10:37:35.488934]: Connected to new Channel. 
+ERROR --- [2023-04-05 10:37:42.374175]: 'async for' requires an object with __aiter__ method, got listHilfe wo sind meine Otter? 
+INFO --- [2023-04-05 10:39:38.611668]: Connected to new Channel. 
+ERROR --- [2023-04-05 10:39:40.924582]: 400 Bad Request (error code: 50006): Cannot send an empty message Hilfe wo sind meine Otter? 
+INFO --- [2023-04-05 10:41:01.962002]: Connected to new Channel. 
+ERROR --- [2023-04-05 10:41:08.783699]: 400 Bad Request (error code: 50006): Cannot send an empty message Hilfe wo sind meine Otter? 
+INFO --- [2023-04-05 10:42:44.294969]: Connected to new Channel. 
+INFO --- [2023-04-05 10:46:08.274579]: Connected to new Channel. 
