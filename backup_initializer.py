@@ -10,11 +10,12 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 qtList = []
 activeChannel = None
+loopDiLoops = 0
 
 
 @bot.event
 async def on_ready():
-    await holdOnASecond(68400)
+    await holdOnASecond(86400)
 
 
 @bot.command()
@@ -47,6 +48,7 @@ async def checkQTs():
     try:
         global activeChannel
         global qtList
+        global loopDiLoops
         if activeChannel is None:
             return
         newQTs = await reddot.get_url(await reddot.authenticate(), "Otters", 10)
@@ -54,27 +56,34 @@ async def checkQTs():
         if newQTs is None:
             await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
             return
-        help = []
         for qts in newQTs:
             if "gallery" in qts or "v.redd.it" in qts or qts in qtList:
                 newQTs[i] = None
             i += 1
-        helpList = qtList
-        qtList = newQTs
-        if qtList is not None and activeChannel is not None:
+        printList = newQTs
+        qtList += newQTs
+        if printList is not None and activeChannel is not None:
             j = 0
-            for qts in qtList:
-                if qtList[j] is not None:
+            for qts in printList:
+                if printList[j] is not None:
                     await activeChannel.send(qts)
                     await asyncio.sleep(1)
                 j += 1
-        qtList = qtList + helpList
+        else:
+            await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
+        if loopDiLoops >= 14:
+            qtList = []
+            loopDiLoops = 0
+
+
     except Exception as e:
         return
 
 async def holdOnASecond(seconds):
+    global loopDiLoops
     await checkQTs()
     await asyncio.sleep(seconds)
+    loopDiLoops += 1
     await holdOnASecond(seconds)
 
 bot.run(os.getenv("TOKEN"))
