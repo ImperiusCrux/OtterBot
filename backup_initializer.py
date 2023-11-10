@@ -1,9 +1,12 @@
 import asyncio
+import datetime
+
 import discord
 import connect_backup as reddot
 import os
 from dotenv import load_dotenv
 from discord.ext import commands
+
 load_dotenv()
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -33,7 +36,6 @@ async def moveChannel(ctx, nextChannel):
             if channel.name == nextChannel and channel.type == discord.ChannelType.text:
                 activeChannel = bot.get_channel(channel.id)
                 break
-
         if activeChannel is None:
             await ctx.send("Hoppla, diesen Channel kann ich nicht finden.")
             return
@@ -47,7 +49,6 @@ async def moveChannel(ctx, nextChannel):
 async def checkQTs():
     try:
         global activeChannel
-        global qtList
         global loopDiLoops
         if activeChannel is None:
             return
@@ -56,28 +57,41 @@ async def checkQTs():
         if newQTs is None:
             await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
             return
-        for qts in newQTs:
-            if "gallery" in qts or "v.redd.it" in qts or qts in qtList:
+        prevQTList = []
+        async for message in activeChannel.history(limit=50, oldest_first=False, before=datetime.datetime.now()):
+            prevQTList.append(message)
+
+        for qt in newQTs:
+            if "gallery" in qt or "v.redd.it" in qt:
                 newQTs[i] = None
+            duplicateMessage = findContent(prevQTList, qt)
+            if duplicateMessage is not None:
+                await duplicateMessage.delete()
+
             i += 1
-        printList = newQTs
-        qtList += newQTs
-        if printList is not None and activeChannel is not None:
+        if newQTs is not None and activeChannel is not None:
             j = 0
-            for qts in printList:
-                if printList[j] is not None:
-                    await activeChannel.send(qts)
+            for qt in newQTs:
+                if newQTs[j] is not None:
+                    await activeChannel.send(qt)
                     await asyncio.sleep(1)
                 j += 1
         else:
             await activeChannel.send("Hoppla ich konnte keine neuen Otter finden.")
         if loopDiLoops >= 14:
-            qtList = []
             loopDiLoops = 0
 
 
     except Exception as e:
         return
+
+
+def findContent(messages, content):
+    for message in messages:
+        if message.content == content:
+            return message
+    return None
+
 
 async def holdOnASecond(seconds):
     global loopDiLoops
@@ -87,6 +101,3 @@ async def holdOnASecond(seconds):
     await holdOnASecond(seconds)
 
 bot.run(os.getenv("TOKEN"))
-
-
-
